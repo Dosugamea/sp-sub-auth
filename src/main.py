@@ -1,6 +1,7 @@
 from starlette.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 from config import CORS_ORIGINS
+from routers.router_discord import discord_router
 
 app = FastAPI(
     title="SweetPotato Authorization Server",
@@ -23,13 +24,10 @@ async def health_check():
     return {"message": "Server is working"}
 
 
-@app.post("/auth")
-async def authorization():
-    """認証エンドポイント(仮)"""
-    return "Not yet implemented!"
+app.include_router(discord_router)
 
 
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True, debug=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
