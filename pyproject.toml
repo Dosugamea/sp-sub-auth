@@ -16,6 +16,7 @@ sqlmodel = "^0.0.8"
 python-dotenv = "^0.21.0"
 pycryptodome = "^3.16.0"
 python-i18n = {extras = ["yaml"], version = "^0.3.9"}
+httpx = "^0.23.3"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^6.0.0"
