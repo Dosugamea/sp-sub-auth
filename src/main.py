@@ -1,16 +1,19 @@
-from dataclasses import dataclass
+from starlette.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
-
-
-@dataclass
-class AuthResponse:
-    text: str
-
+from config import CORS_ORIGINS
 
 app = FastAPI(
     title="SweetPotato Authorization Server",
     description="Discord and sonolus authorization",
     version="0.1.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=CORS_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
